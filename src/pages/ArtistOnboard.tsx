@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -11,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Music, Upload, User, MapPin, DollarSign, Languages, Tag } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface OnboardingFormData {
   name: string;
@@ -71,12 +71,12 @@ const ArtistOnboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
+      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b sticky top-0 z-50 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2 hover:scale-105 transition-transform duration-200">
               <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
                 <Music className="w-5 h-5 text-white" />
               </div>
@@ -85,47 +85,56 @@ const ArtistOnboard = () => {
               </span>
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-purple-600 transition-colors">
+              <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Home
               </Link>
-              <Link to="/artists" className="text-gray-700 hover:text-purple-600 transition-colors">
+              <Link to="/artists" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Browse Artists
               </Link>
-              <Link to="/onboard" className="text-purple-600 font-semibold">
+              <Link to="/onboard" className="text-purple-600 dark:text-purple-400 font-semibold">
                 Join as Artist
               </Link>
-              <Link to="/dashboard" className="text-gray-700 hover:text-purple-600 transition-colors">
+              <Link to="/dashboard" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Dashboard
               </Link>
             </nav>
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              <Button variant="outline" className="hidden sm:inline-flex hover:scale-105 transition-transform duration-200">
+                Sign In
+              </Button>
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 hover:scale-105 transition-all duration-200">
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
       </header>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 animate-fade-up">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Join Our Artist Community
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Create your profile and start getting bookings for your performances
           </p>
         </div>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl animate-scale-in">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Artist Registration Form</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-2xl dark:text-white">Artist Registration Form</CardTitle>
+            <CardDescription className="dark:text-gray-300">
               Fill out the details below to create your artist profile
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
               {/* Basic Information */}
-              <div className="space-y-6">
+              <div className="space-y-6 animate-slide-in-left">
                 <div className="flex items-center gap-2 mb-4">
                   <User className="w-5 h-5 text-purple-600" />
-                  <h3 className="text-lg font-semibold">Basic Information</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Basic Information</h3>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -169,10 +178,10 @@ const ArtistOnboard = () => {
               </div>
 
               {/* Categories */}
-              <div className="space-y-6">
+              <div className="space-y-6 animate-slide-in-right">
                 <div className="flex items-center gap-2 mb-4">
                   <Tag className="w-5 h-5 text-purple-600" />
-                  <h3 className="text-lg font-semibold">Performance Categories</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Performance Categories</h3>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -195,10 +204,10 @@ const ArtistOnboard = () => {
               </div>
 
               {/* Languages */}
-              <div className="space-y-6">
+              <div className="space-y-6 animate-fade-up" style={{ animationDelay: '0.2s' }}>
                 <div className="flex items-center gap-2 mb-4">
                   <Languages className="w-5 h-5 text-purple-600" />
-                  <h3 className="text-lg font-semibold">Languages Spoken</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Languages Spoken</h3>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -218,10 +227,10 @@ const ArtistOnboard = () => {
               </div>
 
               {/* Fee Range */}
-              <div className="space-y-6">
+              <div className="space-y-6 animate-fade-up" style={{ animationDelay: '0.3s' }}>
                 <div className="flex items-center gap-2 mb-4">
                   <DollarSign className="w-5 h-5 text-purple-600" />
-                  <h3 className="text-lg font-semibold">Fee Range</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Fee Range</h3>
                 </div>
                 
                 <div className="space-y-2">
@@ -242,10 +251,10 @@ const ArtistOnboard = () => {
               </div>
 
               {/* Profile Image */}
-              <div className="space-y-6">
+              <div className="space-y-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
                 <div className="flex items-center gap-2 mb-4">
                   <Upload className="w-5 h-5 text-purple-600" />
-                  <h3 className="text-lg font-semibold">Profile Image (Optional)</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Profile Image (Optional)</h3>
                 </div>
                 
                 <div className="space-y-2">
@@ -264,15 +273,15 @@ const ArtistOnboard = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-6">
+              <div className="pt-6 animate-scale-in" style={{ animationDelay: '0.5s' }}>
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg"
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg hover:scale-105 transition-all duration-200"
                 >
                   Submit Application
                 </Button>
-                <p className="text-sm text-gray-500 text-center mt-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-4">
                   By submitting this form, you agree to our Terms of Service and Privacy Policy.
                 </p>
               </div>
