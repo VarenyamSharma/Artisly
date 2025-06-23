@@ -75,11 +75,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b sticky top-0 z-50">
+      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b sticky top-0 z-50 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200">
                 <Music className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -87,25 +87,25 @@ const Index = () => {
               </span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Home
               </Link>
-              <Link to="/artists" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              <Link to="/artists" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Browse Artists
               </Link>
-              <Link to="/onboard" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              <Link to="/onboard" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Join as Artist
               </Link>
-              <Link to="/dashboard" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              <Link to="/dashboard" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 hover:scale-105">
                 Dashboard
               </Link>
             </nav>
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              <Button variant="outline" className="hidden sm:inline-flex">
+              <Button variant="outline" className="hidden sm:inline-flex hover:scale-105 transition-transform duration-200">
                 Sign In
               </Button>
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 hover:scale-105 transition-all duration-200">
                 Get Started
               </Button>
             </div>
@@ -116,8 +116,8 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge className="mb-6 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800">
+          <div className="text-center animate-fade-up">
+            <Badge className="mb-6 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800 animate-scale-in">
               🎭 India's Premier Artist Booking Platform
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
@@ -126,19 +126,19 @@ const Index = () => {
                 {" "}Amazing Artists
               </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10 animate-slide-in-left">
               Artistly brings together talented performers and event planners. 
               Discover incredible artists for your events or showcase your talent to the world.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-right">
               <Link to="/artists">
-                <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-3">
+                <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-3 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                   Explore Artists
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link to="/onboard">
-                <Button size="lg" variant="outline" className="text-lg px-8 py-3 border-purple-200 hover:bg-purple-50">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-3 border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-200">
                   Join as Artist
                 </Button>
               </Link>
@@ -150,7 +150,7 @@ const Index = () => {
       {/* Artist Categories */}
       <section className="py-20 bg-white/50 dark:bg-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Browse by Category
             </h2>
@@ -159,11 +159,11 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {artistCategories.map((category) => (
+            {artistCategories.map((category, index) => (
               <Link key={category.id} to="/artists" className="group">
-                <Card className="h-full hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm group-hover:scale-105">
+                <Card className={`h-full hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm group-hover:scale-105 animate-fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
                   <CardHeader className="text-center pb-4">
-                    <div className={`w-16 h-16 mx-auto rounded-full ${category.color} flex items-center justify-center mb-4`}>
+                    <div className={`w-16 h-16 mx-auto rounded-full ${category.color} flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-110`}>
                       <category.icon className="w-8 h-8" />
                     </div>
                     <CardTitle className="text-xl">{category.name}</CardTitle>
@@ -186,7 +186,7 @@ const Index = () => {
       {/* Featured Artists */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Featured Artists
             </h2>
@@ -195,15 +195,15 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredArtists.map((artist) => (
-              <Card key={artist.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-purple-100 to-blue-100 relative">
+            {featuredArtists.map((artist, index) => (
+              <Card key={artist.id} className={`group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm overflow-hidden hover:scale-105 animate-fade-up`} style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="aspect-video bg-gradient-to-br from-purple-100 to-blue-100 relative overflow-hidden">
                   <img 
                     src={artist.image} 
                     alt={artist.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 animate-slide-in-right">
                     <Badge className="bg-white/90 text-gray-700">
                       {artist.category}
                     </Badge>
@@ -227,7 +227,7 @@ const Index = () => {
                 <CardContent>
                   <div className="flex justify-between items-center">
                     <span className="font-semibold text-purple-600">{artist.priceRange}</span>
-                    <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+                    <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 hover:scale-105 transition-all duration-200">
                       Ask for Quote
                     </Button>
                   </div>
@@ -235,9 +235,9 @@ const Index = () => {
               </Card>
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 animate-fade-in">
             <Link to="/artists">
-              <Button size="lg" variant="outline" className="border-purple-200 hover:bg-purple-50">
+              <Button size="lg" variant="outline" className="border-purple-200 hover:bg-purple-50 hover:scale-105 transition-all duration-200">
                 View All Artists
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -247,22 +247,22 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600">
+      <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600 animate-fade-up">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 animate-slide-in-left">
             Ready to Find Your Perfect Artist?
           </h2>
-          <p className="text-xl text-purple-100 mb-10">
+          <p className="text-xl text-purple-100 mb-10 animate-slide-in-right">
             Join thousands of event planners who trust Artistly for their entertainment needs
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
             <Link to="/artists">
-              <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-3">
+              <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-3 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 Browse Artists Now
               </Button>
             </Link>
             <Link to="/onboard">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3 hover:scale-105 transition-all duration-200">
                 List Your Talent
               </Button>
             </Link>
@@ -271,12 +271,12 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-12 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200">
                   <Music className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-bold">Artistly</span>
