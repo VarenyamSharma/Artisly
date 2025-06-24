@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Button } from "@/components/ui/button";
@@ -21,6 +20,10 @@ const ArtistOnboard = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm<OnboardingFormData>({
     resolver: yupResolver(validationSchema),
     defaultValues: {
+      name: "",
+      bio: "",
+      location: "",
+      feeRange: "",
       categories: [],
       languages: [],
     }
@@ -45,7 +48,7 @@ const ArtistOnboard = () => {
     setValue('languages', updated);
   };
 
-  const onSubmit = (data: OnboardingFormData) => {
+  const onSubmit: SubmitHandler<OnboardingFormData> = (data) => {
     console.log('Form submitted:', { ...data, categories: selectedCategories, languages: selectedLanguages });
     toast({
       title: "Application Submitted!",

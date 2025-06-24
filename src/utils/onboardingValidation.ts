@@ -6,6 +6,7 @@ export const validationSchema = yup.object().shape({
   bio: yup.string().required("Bio is required").min(10, "Bio must be at least 10 characters"),
   location: yup.string().required("Location is required"),
   feeRange: yup.string().required("Fee range is required"),
-  categories: yup.array().of(yup.string()).min(1, "Please select at least one category"),
-  languages: yup.array().of(yup.string()).min(1, "Please select at least one language"),
+  profileImage: yup.mixed().optional(),
+  categories: yup.array().of(yup.string().required()).min(1, "Please select at least one category").required("Categories are required"),
+  languages: yup.array().of(yup.string().required()).min(1, "Please select at least one language").required("Languages are required"),
 });
