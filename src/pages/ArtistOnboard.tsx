@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,8 +24,23 @@ interface OnboardingFormData {
   languages: string[];
 }
 
+const validationSchema = yup.object().shape({
+  name: yup.string().required("Name is required").min(2, "Name must be at least 2 characters"),
+  bio: yup.string().required("Bio is required").min(10, "Bio must be at least 10 characters"),
+  location: yup.string().required("Location is required"),
+  feeRange: yup.string().required("Fee range is required"),
+  categories: yup.array().min(1, "Please select at least one category"),
+  languages: yup.array().min(1, "Please select at least one language"),
+});
+
 const ArtistOnboard = () => {
-  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<OnboardingFormData>();
+  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<OnboardingFormData>({
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      categories: [],
+      languages: [],
+    }
+  });
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const { toast } = useToast();
@@ -142,7 +159,7 @@ const ArtistOnboard = () => {
                     <Label htmlFor="name">Artist/Band Name *</Label>
                     <Input
                       id="name"
-                      {...register("name", { required: "Name is required" })}
+                      {...register("name")}
                       placeholder="Enter your stage name"
                     />
                     {errors.name && (
@@ -154,7 +171,7 @@ const ArtistOnboard = () => {
                     <Label htmlFor="location">Location *</Label>
                     <Input
                       id="location"
-                      {...register("location", { required: "Location is required" })}
+                      {...register("location")}
                       placeholder="City, State"
                     />
                     {errors.location && (
@@ -167,7 +184,7 @@ const ArtistOnboard = () => {
                   <Label htmlFor="bio">Bio/Description *</Label>
                   <Textarea
                     id="bio"
-                    {...register("bio", { required: "Bio is required" })}
+                    {...register("bio")}
                     placeholder="Tell us about your performance style, experience, and what makes you unique..."
                     rows={4}
                   />
@@ -198,8 +215,8 @@ const ArtistOnboard = () => {
                     </div>
                   ))}
                 </div>
-                {selectedCategories.length === 0 && (
-                  <p className="text-sm text-gray-500">Please select at least one category</p>
+                {errors.categories && (
+                  <p className="text-sm text-red-600">{errors.categories.message}</p>
                 )}
               </div>
 
@@ -224,6 +241,9 @@ const ArtistOnboard = () => {
                     </div>
                   ))}
                 </div>
+                {errors.languages && (
+                  <p className="text-sm text-red-600">{errors.languages.message}</p>
+                )}
               </div>
 
               {/* Fee Range */}
@@ -247,6 +267,9 @@ const ArtistOnboard = () => {
                       ))}
                     </SelectContent>
                   </Select>
+                  {errors.feeRange && (
+                    <p className="text-sm text-red-600">{errors.feeRange.message}</p>
+                  )}
                 </div>
               </div>
 
