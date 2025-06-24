@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -10,16 +9,24 @@ export const CTASection = () => {
           Ready to Find Your Perfect Artist?
         </h2>
         <p className="text-xl text-purple-100 mb-10 animate-slide-in-right">
-          Join thousands of event planners who trust Artistly for their entertainment needs
+          Join thousands of event planners who trust Artistly for their
+          entertainment needs
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
           <Link to="/artists">
-            <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-3 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <Button
+              size="lg"
+              className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-3 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
               Browse Artists Now
             </Button>
           </Link>
           <Link to="/onboard">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3 hover:scale-105 transition-all duration-200">
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-black border-white hover:text-white hover:bg-white/10 text-lg px-8 py-3 transition-all duration-200 hover:scale-105"
+            >
               List Your Talent
             </Button>
           </Link>
